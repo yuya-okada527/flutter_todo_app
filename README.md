@@ -1,16 +1,26 @@
 # sample_app
 
-A new Flutter project.
+## 開発環境
 
-## Getting Started
+プロジェクト初期化
 
-This project is a starting point for a Flutter application.
+```bash
+# my_appは、ディレクトリ名
+flutter create my_app
+```
 
-A few resources to get you started if this is your first Flutter project:
+あと、ライブラリ管理ツールで、cocoapods というのがあるみたい
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```bash
+# どのrubyに入れるのがベストかは検討したいので、一旦スキップ
+sudo gem install cocoapods
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+起動コマンド
+
+```bash
+# openしたら、デバイスを選ぶ
+make open
+# ホットリロードが起動する
+make
+```
