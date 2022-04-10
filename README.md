@@ -9,13 +9,6 @@
 flutter create my_app
 ```
 
-あと、ライブラリ管理ツールで、cocoapods というのがあるみたい
-
-```bash
-# どのrubyに入れるのがベストかは検討したいので、一旦スキップ
-sudo gem install cocoapods
-```
-
 起動コマンド
 
 ```bash
