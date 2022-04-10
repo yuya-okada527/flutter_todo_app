@@ -14,18 +14,20 @@ class SampleTodoApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TodoListPage(),
+      home: const TodoListPage(),
     );
   }
 }
 
 class TodoListPage extends StatefulWidget {
+  const TodoListPage({Key? key}) : super(key: key);
+
   @override
   _TodoListPageState createState() => _TodoListPageState();
 }
 
 class _TodoListPageState extends State<TodoListPage> {
-  List<String> todoList = [];
+  List<String> _todoList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +36,22 @@ class _TodoListPageState extends State<TodoListPage> {
         title: const Text("リスト一覧"),
       ),
       body: ListView.builder(
-        itemCount: todoList.length,
+        itemCount: _todoList.length,
         itemBuilder: (context, index) {
           return Card(
             child: ListTile(
-              title: Text(todoList[index]),
+              title: Text(_todoList[index]),
+              trailing: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _todoList.removeAt(index);
+                  });
+                },
+                icon: const Icon(
+                  Icons.delete,
+                  color: Colors.redAccent,
+                ),
+              ),
             ),
           );
         },
@@ -52,7 +65,7 @@ class _TodoListPageState extends State<TodoListPage> {
           );
           if (newListText != null) {
             setState(() {
-              todoList.add(newListText);
+              _todoList.add(newListText);
             });
           }
         },
@@ -75,9 +88,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("リスト追加")
-      ),
+      appBar: AppBar(title: const Text("リスト追加")),
       body: Container(
         padding: const EdgeInsets.all(64),
         child: Column(
@@ -94,22 +105,21 @@ class _TodoAddPageState extends State<TodoAddPage> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop(_text);
-                },
-                child: const Text("リスト追加", style: TextStyle(color: Colors.white))
-              ),
+                  onPressed: () {
+                    Navigator.of(context).pop(_text);
+                  },
+                  child: const Text("リスト追加",
+                      style: TextStyle(color: Colors.white))),
             ),
             const SizedBox(height: 8),
             SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text("キャンセル"),
-              )
-            ),
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("キャンセル"),
+                )),
           ],
         ),
       ),
