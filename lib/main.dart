@@ -55,7 +55,17 @@ class _TodoListPageState extends State<TodoListPage> {
             ),
           );
         },
-      ) : const Text("タスクはありません。"),
+      ) : const Padding(
+        padding: EdgeInsets.all(16),
+        child: Text(
+          "タスクがありません。",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Colors.black54,
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           final newListText = await Navigator.of(context).push(
