@@ -47,7 +47,10 @@ class _TodoListPageState extends State<TodoListPage> {
                                         Navigator.of(context).pop(false),
                                   ),
                                   ElevatedButton(
-                                    child: const Text("確認"),
+                                    child: const Text(
+                                      "確認",
+                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                    ),
                                     onPressed: () =>
                                         Navigator.of(context).pop(true),
                                   ),
@@ -98,4 +101,11 @@ class _TodoListPageState extends State<TodoListPage> {
       ),
     );
   }
+
+  // MEMO: ↓はうまく動かない。。
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _todoList.add("init task");
+  // }
 }
