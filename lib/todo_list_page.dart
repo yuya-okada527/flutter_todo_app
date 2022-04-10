@@ -24,7 +24,14 @@ class _TodoListPageState extends State<TodoListPage> {
               itemBuilder: (context, index) {
                 return Card(
                   child: ListTile(
-                    title: Text(_todoList[index]),
+                    title: Text(
+                      _todoList[index],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.black87,
+                      ),
+                    ),
                     trailing: IconButton(
                       onPressed: () async {
                         // アラートの表示
