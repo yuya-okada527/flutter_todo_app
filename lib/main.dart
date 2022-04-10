@@ -149,13 +149,14 @@ class _TodoAddPageState extends State<TodoAddPage> {
             ),
             const SizedBox(height: 8),
             SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text("キャンセル"),
-                )),
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text("キャンセル"),
+              ),
+            ),
           ],
         ),
       ),
