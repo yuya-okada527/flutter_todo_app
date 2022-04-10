@@ -28,8 +28,7 @@ class _TodoListPageState extends State<TodoListPage> {
                       _todoList[index],
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        color: Colors.black87,
+                        fontSize: 18
                       ),
                     ),
                     trailing: IconButton(
