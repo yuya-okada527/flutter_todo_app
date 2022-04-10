@@ -27,7 +27,7 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
-  List<String> _todoList = [];
+  final List<String> _todoList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class _TodoListPageState extends State<TodoListPage> {
       appBar: AppBar(
         title: const Text("リスト一覧"),
       ),
-      body: ListView.builder(
+      body: _todoList.isNotEmpty ? ListView.builder(
         itemCount: _todoList.length,
         itemBuilder: (context, index) {
           return Card(
@@ -55,7 +55,7 @@ class _TodoListPageState extends State<TodoListPage> {
             ),
           );
         },
-      ),
+      ) : const Text("タスクはありません。"),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           final newListText = await Navigator.of(context).push(
