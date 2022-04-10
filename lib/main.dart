@@ -26,12 +26,12 @@ class TodoListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("タスク一覧")),
+      body: const Center(child: Text("タスク一覧")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
-              return TodoAddPage();
+              return const TodoAddPage();
             }),
           );
         },
@@ -42,6 +42,8 @@ class TodoListPage extends StatelessWidget {
 }
 
 class TodoAddPage extends StatelessWidget {
+  const TodoAddPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
