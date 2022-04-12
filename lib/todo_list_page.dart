@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample_app/models/task_model.dart';
 
 import 'todo_add_page.dart';
 import 'widgets/task_list_item.dart';
@@ -11,7 +12,7 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
-  final List<String> _todoList = [];
+  final List<TaskModel> _todoList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class _TodoListPageState extends State<TodoListPage> {
               itemCount: _todoList.length,
               itemBuilder: (context, index) {
                 return TaskListItem(
-                  title: _todoList[index],
+                  title: _todoList[index].title,
                   onDeleteConfirm: () {
                     setState(() {
                       _todoList.removeAt(index);
@@ -46,14 +47,14 @@ class _TodoListPageState extends State<TodoListPage> {
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          final newListText = await Navigator.of(context).push(
+          final newTask = await Navigator.of(context).push<TaskModel>(
             MaterialPageRoute(builder: (context) {
               return const TodoAddPage();
             }),
           );
-          if (newListText != null) {
+          if (newTask != null) {
             setState(() {
-              _todoList.add(newListText);
+              _todoList.add(newTask);
             });
           }
         },
