@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample_app/models/task_model.dart';
+import 'package:sample_app/repositories/task_repository.dart';
 
 class TodoAddPage extends StatefulWidget {
   const TodoAddPage({Key? key}) : super(key: key);
@@ -46,6 +47,14 @@ class _TodoAddPageState extends State<TodoAddPage> {
                 },
                 child: const Text("キャンセル"),
               ),
+            ),
+            ElevatedButton(
+              child: const Text("fetch"),
+              onPressed: () async {
+                var repository = TaskRepository();
+                var response = await repository.fetchTasks();
+                print(response[0].title);
+              },
             ),
           ],
         ),
