@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample_app/models/task_model.dart';
+import 'package:sample_app/repositories/task_repository.dart';
 
 import 'todo_add_page.dart';
 import 'widgets/task_list_item.dart';
@@ -13,6 +14,19 @@ class TodoListPage extends StatefulWidget {
 
 class _TodoListPageState extends State<TodoListPage> {
   final List<TaskModel> _todoList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    Future(() async {
+      var taskRepository = TaskRepository();
+      var list = await taskRepository.fetchTasks();
+      setState(() {
+        _todoList.add(list.removeLast());
+        _todoList.add(list.removeLast());
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
